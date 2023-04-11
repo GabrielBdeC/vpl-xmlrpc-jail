@@ -184,7 +184,7 @@ echo "   JUnit, Node.js, Octave, Pascal, Perl, PHP, Python, Ruby, Scala,"
 echo "   Scheme, TCL, valgrind)"
 echo "Installing"
 echo "  (Clisp, Clojure, Cobol, CoffeScript, D, Erlang, Go, Haxe, JQuery,"
-echo "   Lua, R, Xquery, VHDL)"
+echo "   R, Xquery, VHDL)"
 echo "This installation may take a long time"
 vpl_install "Ada compiler (GNU)" gnat
 vpl_install "Assembler" nasm
@@ -251,7 +251,6 @@ vpl_install "Haxe programming language" haxe
 vpl_install "JQuery JavaScript Lib" libjs-jquery
 vpl_install "JQuery-UI JavaScript Lib" libjs-jquery-ui
 vpl_install "Julia" julia
-vpl_install "Lua compiler 5.1" lua5.1
 vpl_install "R statistical computation and graphics system (GNU)" r-base
 vpl_install "MIPS R2000/R3000 emulator" spim
 vpl_install "MiniZinc constraint modeling language" minizinc

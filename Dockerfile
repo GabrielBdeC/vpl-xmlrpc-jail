@@ -5,6 +5,7 @@ ENV JAIL_PORT 81
 ENV JAIL_SECURE_PORT 444
 ENV HNAME localhost
 ENV JAIL_URL_PASS secret
+ENV LUAVERSION=5.4.4
 
 RUN apt-get -qq update && apt-get -yqq install --no-install-recommends apt-utils make lsb lsb-core g++ openssl libssl-dev  \
   iptables xorg dbus-x11 tightvncserver xfonts-75dpi xfonts-100dpi openbox gconf2 xterm firefox wget curl net-tools bc gnat\
@@ -18,6 +19,19 @@ ENV LC_ALL en_US.UTF-8
 RUN apt-get -yqq install --no-install-recommends locales
 RUN rm -rf /var/lib/apt/lists/*
 RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+
+WORKDIR /tmp/lua/
+RUN apt-get -qq update && apt-get -yqq install --no-install-recommends vim
+RUN 	curl -R -O http://www.lua.org/ftp/lua-$LUAVERSION.tar.gz \
+	&& ls \
+	&& tar zxf lua-$LUAVERSION.tar.gz \
+	&& cd lua-$LUAVERSION \
+	&& vim Makefile -c ":%s/INSTALL_TOP= \/usr\/local/INSTALL_TOP= \/usr/g | :wq" \
+	&& make all test \
+	&& make install \
+	&& cd .. \
+	&& rm -rf /tmp/lua
+
 
 WORKDIR /usr/src/vpl-jail
 COPY . .
