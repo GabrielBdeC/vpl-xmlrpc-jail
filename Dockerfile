@@ -22,8 +22,7 @@ RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
 WORKDIR /tmp/lua/
 RUN apt-get -qq update && apt-get -yqq install --no-install-recommends vim
-RUN 	curl -R -O http://www.lua.org/ftp/lua-$LUAVERSION.tar.gz \
-	&& ls \
+RUN 	curl -R -O https://www.lua.org/ftp/lua-$LUAVERSION.tar.gz \
 	&& tar zxf lua-$LUAVERSION.tar.gz \
 	&& cd lua-$LUAVERSION \
 	&& vim Makefile -c ":%s/INSTALL_TOP= \/usr\/local/INSTALL_TOP= \/usr/g | :wq" \
